@@ -43,7 +43,11 @@ namespace Miniblog.Core
         {
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
+            
+            services
+                .AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+            
             services.AddSingleton<IUserServices, BlogUserServices>();
             services.AddSingleton<IBlogService, FileBlogService>();
             services.Configure<BlogSettings>(Configuration.GetSection("blog"));

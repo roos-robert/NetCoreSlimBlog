@@ -10,13 +10,15 @@
     <title>@ViewData["Title"]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="@ViewData["Description"]" />
-
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    
     <link rel="preload" href="~/js/site.js" as="script" />
-    <link rel="preload" href="~/css/belowthefold.scss" as="style" />
-    <noscript><link rel="stylesheet" href="~/css/belowthefold.scss" /></noscript>
-    @RenderSection("Preload", required: false)
-    <link rel="stylesheet" href="~/css/abovethefold.scss" inline />
+    <link rel="preload" href="~/css/cirrus.min.css" as="style" />
 
+    @RenderSection("Preload", required: false)
     <meta property="og:type" content="article" />
     <meta property="og:title" content="@ViewData["Title"]" />
     <meta property="og:description" content="@ViewData["Description"]" />
