@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -32,18 +31,6 @@ namespace Miniblog.Core
             CreateWebHostBuilder(args).Build().Run();
         }
         
-/*        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel(serverOptions =>
-                        {
-                            // Set properties and call methods on options
-                        })
-                        .UseStartup<Startup>()
-                        .ConfigureKestrel(a => a.AddServerHeader = false);
-                });*/
-
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
@@ -123,6 +110,7 @@ namespace Miniblog.Core
                 app.UseExceptionHandler("/Shared/Error");
                 app.UseHsts();
             }
+            
             app.UseRouting();
             app.Use((context, next) =>
             {
