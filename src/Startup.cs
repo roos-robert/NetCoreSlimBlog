@@ -145,9 +145,8 @@ namespace Miniblog.Core
             app.UseOutputCaching();
             app.UseWebMarkupMin();
 
-            app.UseRouting();
-            
             app.UseAuthentication();
+            app.UseAuthorization(); 
             
             app.UseEndpoints(endpoints =>
             {
