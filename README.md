@@ -1,6 +1,6 @@
-# Blog engine for ASP.NET Core 2.2
+# Blog engine for ASP.NET Core 3.0
 
-A full-featured yet simple blog engine built on ASP.NET Core 2.2.
+A full-featured yet simple blog engine built on ASP.NET Core 3.0.
 
 This is a fork and continuation of the original MiniBlog.Core project by Mads Kristensen: https://github.com/madskristensen/Miniblog.Core
 
