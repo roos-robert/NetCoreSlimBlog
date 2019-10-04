@@ -17,6 +17,7 @@
     
     <link rel="preload" href="~/js/site.js" as="script" />
     <link rel="preload" href="~/css/cirrus.min.css" as="style" />
+    <link rel="preload" href="~/css/style.css" as="style" />
 
     @RenderSection("Preload", required: false)
     <meta property="og:type" content="article" />
@@ -44,7 +45,7 @@
     
     <header>
         <div class="content">
-            <h1 itemprop="name"><a class="u u-C" href="~/">@manifest.Name</a></h1>
+            <h1 class="main-title" itemprop="name"><a class="u u-C text-dark" href="~/">@manifest.Name</a></h1>
             <p class="author">By @settings.Value.Owner</p>
             <div class="divider"></div>
         </div>
@@ -68,8 +69,8 @@
 
                     if (User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-controller="Blog" asp-action="Edit">New post</a></li>
-                        <li><a class="btn-primary" href="~/logout/" title="Sign out as administrator">Sign out</a></li>
+                        <li><a class="btn btn-info" asp-controller="Blog" asp-action="Edit">New post</a></li>
+                        <li><a class="btn btn-primary" href="~/logout/" title="Sign out as administrator">Sign out</a></li>
                     }
                     else
                     {

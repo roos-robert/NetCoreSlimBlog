@@ -1,0 +1,26 @@
+/* 
+    In this CSS-file overrides of standard CSS-settings from Cirrus are done
+    Also custom CSS can be added here to further customize the look and feel of the blog
+*/
+
+/* OVERRIDES */
+
+/* Font overrides */
+
+h1 {
+    font-size: 2.75rem;
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+a {
+    color:  #2972fa;
+}
+
+/* CUSTOM CSS */
+
+.main-title {
+    font-size: 3.25rem;
+}
