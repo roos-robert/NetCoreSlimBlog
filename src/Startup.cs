@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Miniblog.Core.Services;
 using WebEssentials.AspNetCore.OutputCaching;
 using WebMarkupMin.AspNetCore2;
 using WebMarkupMin.Core;
 using WilderMinds.MetaWeblog;
-
 using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
 using MetaWeblogService = Miniblog.Core.Services.MetaWeblogService;
 using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
@@ -31,6 +31,18 @@ namespace Miniblog.Core
         {
             CreateWebHostBuilder(args).Build().Run();
         }
+        
+/*        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.ConfigureKestrel(serverOptions =>
+                        {
+                            // Set properties and call methods on options
+                        })
+                        .UseStartup<Startup>()
+                        .ConfigureKestrel(a => a.AddServerHeader = false);
+                });*/
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
@@ -43,7 +55,7 @@ namespace Miniblog.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddSingleton<IUserServices, BlogUserServices>();
             services.AddSingleton<IBlogService, FileBlogService>();
@@ -99,7 +111,7 @@ namespace Miniblog.Core
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -111,7 +123,7 @@ namespace Miniblog.Core
                 app.UseExceptionHandler("/Shared/Error");
                 app.UseHsts();
             }
-
+            app.UseRouting();
             app.Use((context, next) =>
             {
                 context.Response.Headers["X-Content-Type-Options"] = "nosniff";
@@ -129,16 +141,19 @@ namespace Miniblog.Core
             }
 
             app.UseMetaWeblog("/metaweblog");
-            app.UseAuthentication();
 
             app.UseOutputCaching();
             app.UseWebMarkupMin();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+            
+            app.UseAuthentication();
+            
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Blog}/{action=Index}/{id?}");
+                    pattern: "{controller=Blog}/{action=Index}/{id?}");
             });
         }
     }
