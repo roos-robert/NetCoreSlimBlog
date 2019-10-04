@@ -6,9 +6,6 @@ This is a fork and continuation of the original MiniBlog.Core project by Mads Kr
 
 ![Editor](art/editor.png)
 
-### Custom themes
-In search for custom designed themes for MiniBlog.Core? [Click here](https://francis.bio/miniblog-themes/).
-
 ## Features
 - Windows/Open Live Writer support
 - RSS and ATOM feeds
@@ -59,19 +56,9 @@ You can embed any youtube video by using the following syntax in the source of a
 *ScXvuavqhzo* is the ID of the YouTube video which can be found in any YouTube link looking this *youtube.com/watch?v=**ScXvuavqhzo***
 
 ## How to use
-On the command line, install the template.
+1. Clone the repository
 
-```cmd
-dotnet new --install MadsKristensen.AspNetCore.Miniblog
-```
-
-Then create it into any folder.
-
-```cmd
-dotnet new miniblog
-```
-
-Then run it or open it in Visual Studio or your favorite code editor.
+2. Run it or open it in Visual Studio or your favorite code editor.
 
 ```cmd
 dotnet run
