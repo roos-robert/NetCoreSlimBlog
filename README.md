@@ -66,5 +66,7 @@ dotnet run
 
 ## Credits
 SVG icons by <https://simpleicons.org/>
+
 CSS Framework Cirrus by <https://github.com/Spiderpig86/Cirrus/>
+
 MiniBlog.Core by <https://github.com/madskristensen/Miniblog.Core/>
