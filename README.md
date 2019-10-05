@@ -12,7 +12,7 @@ This is a fork and continuation of the original MiniBlog.Core project by Mads Kr
 - User comments
 - Search engine optimized
 - All major browsers fully supported (IE 9+)
-- Social media integration (Facebook, Twitter, Google+)
+- Social media integration (Facebook, Twitter)
 - Lazy loads images for better performance
 - Easy YouTube video embedding
 - Looks great when printed
