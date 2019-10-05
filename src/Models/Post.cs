@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Miniblog.Core.Models
+namespace NetCoreSlimBlog.Models
 {
     public class Post
     {

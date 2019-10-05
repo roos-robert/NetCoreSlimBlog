@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Miniblog.Core.Models;
+using NetCoreSlimBlog.Models;
 
-namespace Miniblog.Core.Services
+namespace NetCoreSlimBlog.Services
 {
     public interface IBlogService
     {

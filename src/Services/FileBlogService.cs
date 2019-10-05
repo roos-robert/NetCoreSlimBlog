@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Miniblog.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,8 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using NetCoreSlimBlog.Models;
 
-namespace Miniblog.Core.Services
+namespace NetCoreSlimBlog.Services
 {
     public class FileBlogService : IBlogService
     {
