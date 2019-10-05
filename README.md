@@ -4,7 +4,7 @@ A full-featured yet simple blog engine built on ASP.NET Core 3.0.
 
 This is a fork and continuation of the original MiniBlog.Core project by Mads Kristensen: https://github.com/madskristensen/Miniblog.Core
 
-![Editor](art/editor.png)
+![Editor](images/editor.png)
 
 ## Features
 - Windows/Open Live Writer support
