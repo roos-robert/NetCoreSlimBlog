@@ -6,11 +6,11 @@ using System.Xml;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Miniblog.Core.Models;
-using Miniblog.Core.Services;
+using NetCoreSlimBlog.Models;
+using NetCoreSlimBlog.Services;
 using WebEssentials.AspNetCore.Pwa;
 
-namespace Miniblog.Core.Controllers
+namespace NetCoreSlimBlog.Controllers
 {
     public class BlogController : Controller
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Miniblog.Core.Models
+namespace NetCoreSlimBlog.Models
 {
     public class LoginViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace Miniblog.Core.Services
+﻿namespace NetCoreSlimBlog.Services
 {
     public interface IUserServices
     {

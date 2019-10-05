@@ -9,14 +9,14 @@
     await Html.RenderPartialAsync("Post.cshtml", post);
 }
 
-<nav class="pagination container" aria-label="Pagination">
+<nav class="pagination content" aria-label="Pagination">
     @if (Model.Any())
     {
-        <a rel="prev" href="@ViewData["prev"]" title="Older posts">&laquo; Older</a>
+        <a class="btn btn-info" rel="prev" href="@ViewData["prev"]" title="Older posts">&laquo; Older</a>
     }
     @if (currentPage > 0)
     {
-        <a rel="next" href="@ViewData["next"]" title="Newer posts">Newer &raquo;</a>
+        <a class="btn btn-info"  rel="next" href="@ViewData["next"]" title="Newer posts">Newer &raquo;</a>
     }
     <br /><br />
 

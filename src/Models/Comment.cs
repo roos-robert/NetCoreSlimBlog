@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Miniblog.Core.Models
+namespace NetCoreSlimBlog.Models
 {
     public class Comment
     {
@@ -37,7 +37,7 @@ namespace Miniblog.Core.Models
                     sb.Append(hashBytes[i].ToString("X2"));
                 }
 
-                return $"https://www.gravatar.com/avatar/{sb.ToString().ToLowerInvariant()}?s=60&d=blank";
+                return $"https://www.gravatar.com/avatar/{sb.ToString().ToLowerInvariant()}?s=60&d=identicon";
             }
         }
 

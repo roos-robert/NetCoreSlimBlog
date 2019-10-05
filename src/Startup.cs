@@ -8,16 +8,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Miniblog.Core.Services;
+using NetCoreSlimBlog.Services;
 using WebEssentials.AspNetCore.OutputCaching;
 using WebMarkupMin.AspNetCore2;
 using WebMarkupMin.Core;
 using WilderMinds.MetaWeblog;
 using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
-using MetaWeblogService = Miniblog.Core.Services.MetaWeblogService;
+using MetaWeblogService = NetCoreSlimBlog.Services.MetaWeblogService;
 using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
 
-namespace Miniblog.Core
+namespace NetCoreSlimBlog
 {
     public class Startup
     {
@@ -43,12 +43,16 @@ namespace Miniblog.Core
         {
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
+            
+            services
+                .AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+            
             services.AddSingleton<IUserServices, BlogUserServices>();
             services.AddSingleton<IBlogService, FileBlogService>();
             services.Configure<BlogSettings>(Configuration.GetSection("blog"));
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMetaWeblog<MetaWeblogService>();
+            services.AddMetaWeblog<Services.MetaWeblogService>();
 
             // Progressive Web Apps https://github.com/madskristensen/WebEssentials.AspNetCore.ServiceWorker
             services.AddProgressiveWebApp(new WebEssentials.AspNetCore.Pwa.PwaOptions

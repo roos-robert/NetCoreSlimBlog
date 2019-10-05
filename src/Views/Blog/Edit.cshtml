@@ -8,9 +8,8 @@
 }
 
 @section Head{
-    <link rel="stylesheet" href="~/css/admin.scss" />
 }
-
+<section class="content">
     <form method="post" id="edit" class="container" asp-controller="Blog" asp-action="UpdatePost">
         <div asp-validation-summary="All"></div>
         <input type="hidden" asp-for="@Model.ID" />
@@ -45,17 +44,17 @@
         <textarea asp-for="@Model.Content" rows="20" aria-label="Content">@Model.Content</textarea>
         <br />
 
-        <input type="submit" value="Save" title="Save the post" />
+        <input class="btn btn-info" type="submit" value="Save" title="Save the post" />
 
         <input asp-for="@Model.IsPublished" />
         <label asp-for="@Model.IsPublished">Is published</label>
 
         @if (!isNew)
         {
-            <input type="submit" value="Delete..." class="delete" title="Delete the post..." asp-action="DeletePost" asp-route-id="@Model.ID" />
+            <input type="submit" value="Delete..." class="delete btn btn-danger" title="Delete the post..." asp-action="DeletePost" asp-route-id="@Model.ID" />
         }
     </form>
-
+</section>
 @section Scripts {
     <script src="//@host/lib/tinymce/tinymce.min.js"></script> @*with enabled CDN tinymce is not able to find some files*@
     <script src="~/js/admin.js" async></script>

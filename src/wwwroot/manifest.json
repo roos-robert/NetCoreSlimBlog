@@ -1,6 +1,6 @@
 {
-  "name": "Miniblog.Core",
-  "short_name": "Miniblog.Core",
+  "name": "NetCoreSlimBlog",
+  "short_name": "NetCoreSlimBlog",
   "description": "A short description of the blog.",
   "icons": [
     {
