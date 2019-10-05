@@ -16,6 +16,14 @@ h2 {
     font-weight: 400;
 }
 
+h3 {
+    font-weight: 400;
+}
+
+h6 {
+    font-size: 1.15rem;
+}
+
 p {
     font-size: 1.25rem;
     line-height: 1.6;
@@ -46,4 +54,14 @@ a {
 
 .text-medium-weight {
     font-weight: 400;
+}
+
+/* DIVs */
+
+.admin {
+    background-color: #f5f5f5;
+}
+
+.article-footer {
+    padding: 1rem;
 }

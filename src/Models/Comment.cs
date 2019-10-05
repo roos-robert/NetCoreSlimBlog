@@ -37,7 +37,7 @@ namespace NetCoreSlimBlog.Models
                     sb.Append(hashBytes[i].ToString("X2"));
                 }
 
-                return $"https://www.gravatar.com/avatar/{sb.ToString().ToLowerInvariant()}?s=60&d=blank";
+                return $"https://www.gravatar.com/avatar/{sb.ToString().ToLowerInvariant()}?s=60&d=identicon";
             }
         }
 
