@@ -5,22 +5,45 @@
 
 /* OVERRIDES */
 
-/* Font overrides */
+/* Font and links overrides */
 
 h1 {
     font-size: 2.75rem;
+    font-weight: 400;
+}
+
+h2 {
+    font-weight: 400;
 }
 
 p {
     font-size: 1.25rem;
+    line-height: 1.6;
 }
 
+.btn:hover {
+    color: #fff;
+}
+
+/* Forms overrides */
+
 a {
-    color:  #2972fa;
+    color: #2972fa;
 }
 
 /* CUSTOM CSS */
 
+/* Fonts and links */
+
 .main-title {
     font-size: 3.25rem;
+    text-align: right;
+}
+
+.author {
+    text-align: right;
+}
+
+.text-medium-weight {
+    font-weight: 400;
 }

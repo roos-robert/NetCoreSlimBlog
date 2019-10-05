@@ -89,21 +89,17 @@ noscript p {
     margin-top: 1em;
 
     a {
-        border: 1px solid $comments_input_border-color;
-        background: $comments_bg_color;
-        color: $text_color;
+
         display: inline-block;
         padding: 4px 15px;
         text-decoration: none;
+        color: #fff;
 
         &[rel=next] {
             float: right;
         }
 
-        &:hover,
-        &:focus {
-            background: $comments_border-color;
-        }
+
     }
 }
 
