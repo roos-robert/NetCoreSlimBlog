@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace NetCoreSlimBlog.Models
+﻿namespace NetCoreSlimBlog.Models
 {
     using System.ComponentModel.DataAnnotations;
 

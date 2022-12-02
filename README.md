@@ -2,9 +2,9 @@
 
 A full-featured yet simple blog engine built on ASP.NET Core 7 (3.1 and above).
 
-Please be aware that [Mads is taking pull requests, but is not actively working on it](https://github.com/madskristensen/Miniblog.Core/issues/159#issuecomment-765629584).
+Please be aware that [Mads is taking pull requests, but is not actively working on it](https://github.com/madskristensen/NetCoreSlimBlog/issues/159#issuecomment-765629584).
 
-This is a fork and continuation of the original MiniBlog.Core project by Mads Kristensen: https://github.com/madskristensen/Miniblog.Core
+This is a fork and continuation of the original NetCoreSlimBlog project by Mads Kristensen: https://github.com/madskristensen/NetCoreSlimBlog
 
 Please note that this README is not fully up to date, more to be added/updated in the future.
 
@@ -73,4 +73,4 @@ SVG icons by <https://simpleicons.org/>
 
 CSS Framework Cirrus by <https://github.com/Spiderpig86/Cirrus/>
 
-MiniBlog.Core by <https://github.com/madskristensen/Miniblog.Core/>
+NetCoreSlimBlog by <https://github.com/madskristensen/NetCoreSlimBlog/>

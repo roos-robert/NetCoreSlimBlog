@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace NetCoreSlimBlog.Models
+﻿namespace NetCoreSlimBlog.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

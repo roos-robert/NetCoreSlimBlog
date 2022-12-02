@@ -1,8 +1,8 @@
-namespace Miniblog.Core.Services
+namespace NetCoreSlimBlog.Services
 {
     using Microsoft.AspNetCore.Http;
 
-    using Miniblog.Core.Models;
+    using NetCoreSlimBlog.Models;
 
     using System;
     using System.Collections.Generic;

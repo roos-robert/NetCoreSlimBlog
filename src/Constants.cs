@@ -1,4 +1,4 @@
-namespace Miniblog.Core
+namespace NetCoreSlimBlog
 {
     using System.Diagnostics.CodeAnalysis;
 

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace NetCoreSlimBlog.Controllers
+﻿namespace NetCoreSlimBlog.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 

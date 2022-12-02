@@ -1,22 +1,3 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
-using NetCoreSlimBlog.Services;
-using WebEssentials.AspNetCore.OutputCaching;
-using WebMarkupMin.AspNetCore2;
-using WebMarkupMin.Core;
-using WilderMinds.MetaWeblog;
-using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
-using MetaWeblogService = NetCoreSlimBlog.Services.MetaWeblogService;
-using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
-
 namespace NetCoreSlimBlog
 {
     using Microsoft.AspNetCore.Authentication.Cookies;
@@ -90,6 +71,7 @@ namespace NetCoreSlimBlog
             }
 
             app.UseMetaWeblog("/metaweblog");
+            app.UseAuthentication();
 
             app.UseOutputCaching();
             app.UseWebMarkupMin();

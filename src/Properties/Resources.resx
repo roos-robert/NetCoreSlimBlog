@@ -133,7 +133,7 @@
     <value>Login</value>
   </data>
   <data name="MiniblogCore" xml:space="preserve">
-    <value>Miniblog.Core</value>
+    <value>NetCoreSlimBlog</value>
   </data>
   <data name="NewPost" xml:space="preserve">
     <value>New post</value>

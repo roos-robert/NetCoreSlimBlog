@@ -1,16 +1,3 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.SyndicationFeed;
-using Microsoft.SyndicationFeed.Atom;
-using Microsoft.SyndicationFeed.Rss;
-using NetCoreSlimBlog.Services;
-using WebEssentials.AspNetCore.Pwa;
-
 namespace NetCoreSlimBlog.Controllers
 {
     using Microsoft.AspNetCore.Http.Features;
@@ -20,7 +7,7 @@ namespace NetCoreSlimBlog.Controllers
     using Microsoft.SyndicationFeed.Atom;
     using Microsoft.SyndicationFeed.Rss;
 
-    using Miniblog.Core.Services;
+    using NetCoreSlimBlog.Services;
 
     using System;
     using System.Globalization;
@@ -79,8 +66,8 @@ namespace NetCoreSlimBlog.Controllers
 
             xml.WriteStartElement("service");
 
-            xml.WriteElementString("enginename", "Miniblog.Core");
-            xml.WriteElementString("enginelink", "http://github.com/madskristensen/Miniblog.Core/");
+            xml.WriteElementString("enginename", "NetCoreSlimBlog");
+            xml.WriteElementString("enginelink", "http://github.com/madskristensen/NetCoreSlimBlog/");
             xml.WriteElementString("homepagelink", host);
 
             xml.WriteStartElement("apis");
@@ -187,7 +174,7 @@ namespace NetCoreSlimBlog.Controllers
             await atom.WriteTitle(this.manifest.Name).ConfigureAwait(false);
             await atom.WriteId(host).ConfigureAwait(false);
             await atom.WriteSubtitle(this.manifest.Description).ConfigureAwait(false);
-            await atom.WriteGenerator("NetCoreSlimBlog", "https://github.com/rr222cy/NetCoreSlimBlog, "1.0").ConfigureAwait(false);
+            await atom.WriteGenerator("NetCoreSlimBlog", "https://github.com/rr222cy/NetCoreSlimBlog", "1.0").ConfigureAwait(false);
             await atom.WriteValue("updated", updated.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture)).ConfigureAwait(false);
             return atom;
         }

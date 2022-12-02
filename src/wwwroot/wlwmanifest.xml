@@ -20,7 +20,7 @@
     <fileUploadNameFormat>{FileName}</fileUploadNameFormat>
   </options>
   <weblog>
-    <ServiceName>MiniBlog.Core</ServiceName>
+    <ServiceName>NetCoreSlimBlog</ServiceName>
     <imageUrl>img/icon16x16.png</imageUrl>
     <watermarkImageUrl>img/icon16x16.png</watermarkImageUrl>
     <homepageLinkText>View your blog</homepageLinkText>

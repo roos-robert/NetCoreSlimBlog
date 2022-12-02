@@ -1,30 +1,19 @@
-﻿using System;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+
+using NetCoreSlimBlog.Models;
+using NetCoreSlimBlog.Services;
+
+using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using NetCoreSlimBlog.Models;
-using NetCoreSlimBlog.Services;
-using WebEssentials.AspNetCore.Pwa;
 
 namespace NetCoreSlimBlog.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-
-    using Miniblog.Core.Models;
-    using Miniblog.Core.Services;
-
-    using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
-    using System.Xml;
 
     using WebEssentials.AspNetCore.Pwa;
 
@@ -184,7 +173,7 @@ namespace NetCoreSlimBlog.Controllers
 
         [Route("/{page:int?}")]
         [OutputCache(Profile = "default")]
-        public async Task<IActionResult> Index([FromRoute]int page = 0)
+        public async Task<IActionResult> Index([FromRoute] int page = 0)
         {
             // get published posts.
             var posts = this.blog.GetPosts();

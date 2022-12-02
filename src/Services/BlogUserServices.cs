@@ -1,9 +1,4 @@
-﻿using System;
-using System.Text;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using Microsoft.Extensions.Configuration;
-
-namespace NetCoreSlimBlog.Services
+﻿namespace NetCoreSlimBlog.Services
 {
     using Microsoft.AspNetCore.Cryptography.KeyDerivation;
     using Microsoft.Extensions.Configuration;

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using WilderMinds.MetaWeblog;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace NetCoreSlimBlog.Services
 {

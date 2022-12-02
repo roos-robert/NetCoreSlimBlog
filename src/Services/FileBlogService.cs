@@ -1,23 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using NetCoreSlimBlog.Models;
-
 namespace NetCoreSlimBlog.Services
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
 
-    using Miniblog.Core.Models;
+    using NetCoreSlimBlog.Models;
 
     using System;
     using System.Collections.Generic;

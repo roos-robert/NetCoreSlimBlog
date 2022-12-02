@@ -1,4 +1,4 @@
-﻿@inject IOptionsSnapshot<BlogSettings> settings
+@inject IOptionsSnapshot<BlogSettings> settings
 @inject WebManifest manifest
 @{
     var host = $"{Context.Request.Scheme}://{Context.Request.Host}";
@@ -10,7 +10,6 @@
     <title>@ViewData[Constants.Title]</title>
     <meta name="description" content="@ViewData[Constants.Description]" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="@ViewData["Description"]" />
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet" />
@@ -25,7 +24,6 @@
     @RenderSection(Constants.Preload, required: false)
     <link rel="stylesheet" href="~/css/abovethefold.scss" inline />
 
-    @RenderSection("Preload", required: false)
     <meta property="og:type" content="article" />
     <meta property="og:title" content="@ViewData[Constants.Title]" />
     <meta property="og:description" content="@ViewData[Constants.Description]" />

@@ -1,12 +1,3 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using NetCoreSlimBlog.Models;
-using NetCoreSlimBlog.Services;
-
 namespace NetCoreSlimBlog.Controllers
 {
     using Microsoft.AspNetCore.Authentication;
@@ -14,8 +5,8 @@ namespace NetCoreSlimBlog.Controllers
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    using Miniblog.Core.Models;
-    using Miniblog.Core.Services;
+    using NetCoreSlimBlog.Models;
+    using NetCoreSlimBlog.Services;
 
     using System.Diagnostics.CodeAnalysis;
     using System.Security.Claims;
