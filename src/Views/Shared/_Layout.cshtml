@@ -1,13 +1,14 @@
 ﻿@inject IOptionsSnapshot<BlogSettings> settings
 @inject WebManifest manifest
 @{
-    var host = Context.Request.Scheme + "://" + Context.Request.Host;
+    var host = $"{Context.Request.Scheme}://{Context.Request.Host}";
 }
 <!DOCTYPE html>
 <html lang="en">
-<head prefix="og: http://ogp.me/ns#">
+<head prefix="og:http://ogp.me/ns#">
     <meta charset="utf-8" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData[Constants.Title]</title>
+    <meta name="description" content="@ViewData[Constants.Description]" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="@ViewData["Description"]" />
     
@@ -15,14 +16,19 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
     
-    <link rel="preload" href="~/js/site.js" as="script" />
     <link rel="preload" href="~/css/cirrus.min.css" as="style" />
     <link rel="preload" href="~/css/style.css" as="style" />
 
+    <link rel="preload" href="~/js/site.js" as="script" />
+    <link rel="preload" href="~/css/belowthefold.scss" as="style" />
+    <noscript><link rel="stylesheet" href="~/css/belowthefold.scss" /></noscript>
+    @RenderSection(Constants.Preload, required: false)
+    <link rel="stylesheet" href="~/css/abovethefold.scss" inline />
+
     @RenderSection("Preload", required: false)
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="@ViewData["Title"]" />
-    <meta property="og:description" content="@ViewData["Description"]" />
+    <meta property="og:title" content="@ViewData[Constants.Title]" />
+    <meta property="og:description" content="@ViewData[Constants.Description]" />
     <meta property="og:url" content="@(host + Context.Request.Path)" />
     <meta property="og:image" content="@host/img/icon512x512.png" />
     <meta property="og:image:width" content="512" />
@@ -35,9 +41,12 @@
     <link rel="shortcut icon" href="~/img/icon16x16.png" />
 
     <link rel="edituri" type="application/rsd+xml" title="RSD" href="~/rsd.xml" />
-    <link rel="alternate" type="application/rss+xml" href="~/feed/rss/" />
-    <link rel="alternate" type="application/atom+xml" href="~/feed/atom/" />
-    @RenderSection("Head", required: false)
+    <link rel="alternate" type="application/rss+xml" href="~/feed/rss/" title="@ViewData[Constants.Title]" />
+    <link rel="alternate" type="application/atom+xml" href="~/feed/atom/" title="@ViewData[Constants.Title]" />
+    @RenderSection(Constants.Head, required: false)
+
+    <meta name="application-name" content="@ViewData[Constants.Title]" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
     
@@ -53,7 +62,7 @@
 
 <main itemprop="mainEntity" itemscope itemtype="http://schema.org/Blog">
     <noscript>
-        <p class="container">Some features of this website do not work as expected when JavaScript is disabled</p>
+        <p class="container">@NetCoreSlimBlog.Properties.Resources.SomeFeaturesOfThisWebsiteDoNotWorkAsExpectedWhenJavaScriptIsDisabled</p>
     </noscript>
     @RenderBody()
 </main>
@@ -69,18 +78,18 @@
 
                     if (User.Identity.IsAuthenticated)
                     {
-                        <li><a class="btn btn-info" asp-controller="Blog" asp-action="Edit">New post</a></li>
-                        <li><a class="btn btn-primary" href="~/logout/" title="Sign out as administrator">Sign out</a></li>
+                        <li><a class="btn btn-info" asp-controller="Blog" asp-action="Edit" asp-route-id="">@NetCoreSlimBlog.Properties.Resources.NewPost</a></li>
+                        <li><a class="btn btn-primary" href="~/logout/" title="@NetCoreSlimBlog.Properties.Resources.SignOutAsAdministrator">@NetCoreSlimBlog.Properties.Resources.SignOut</a></li>
                     }
                     else
                     {
-                        <li><a class="btn btn-info" href="~/login/?returnUrl=@path" rel="nofollow" title="Sign in as administrator">Sign in</a></li>
+                        <li><a class="btn btn-info" href="~/login/?returnUrl=@path" rel="nofollow" title="@NetCoreSlimBlog.Properties.Resources.SignInAsAdministrator">@NetCoreSlimBlog.Properties.Resources.SignIn</a></li>
                     }
                 }
             </ul>
         </nav>
     </div>
-    <p>Powered by <a href="https://github.com/rr222cy/NetCoreSlimBlog" rel="noopener noreferrer" target="_blank">NetCoreSlimBlog</a></p>
+    <p>@NetCoreSlimBlog.Properties.Resources.PoweredBy <a href="https://github.com/rr222cy/NetCoreSlimBlog" rel="noopener noreferrer" target="_blank">@NetCoreSlimBlog.Properties.Resources.MiniblogCore</a></p>
 </footer>
 
 <!-- This lazy loads the stylesheet in a non-render blocking way -->
@@ -88,6 +97,6 @@
     <noscript><link rel="stylesheet" href="~/css/belowthefold.scss" /></noscript>
 
     <script src="~/js/site.js" async defer></script>
-    @RenderSection("Scripts", required: false)
+    @RenderSection(Constants.Scripts, required: false)
 </body>
 </html>

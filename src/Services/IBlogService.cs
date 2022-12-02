@@ -7,113 +7,33 @@ using NetCoreSlimBlog.Models;
 
 namespace NetCoreSlimBlog.Services
 {
+    using Miniblog.Core.Models;
+
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     public interface IBlogService
     {
-        Task<IEnumerable<Post>> GetPosts(int count, int skip = 0);
-
-        Task<IEnumerable<Post>> GetPostsByCategory(string category);
-
-        Task<Post> GetPostBySlug(string slug);
-
-        Task<Post> GetPostById(string id);
-
-        Task<IEnumerable<string>> GetCategories();
-
-        Task SavePost(Post post);
-
         Task DeletePost(Post post);
 
-        Task<string> SaveFile(byte[] bytes, string fileName, string suffix = null);
-    }
+        IAsyncEnumerable<string> GetCategories();
 
-    public abstract class InMemoryBlogServiceBase : IBlogService
-    {
-        public InMemoryBlogServiceBase(IHttpContextAccessor contextAccessor)
-        {
-            ContextAccessor = contextAccessor;
-        }
+        IAsyncEnumerable<string> GetTags();
 
-        protected List<Post> Cache { get; set; }
-        protected IHttpContextAccessor ContextAccessor { get; }
+        Task<Post?> GetPostById(string id);
 
-        public virtual Task<IEnumerable<Post>> GetPosts(int count, int skip = 0)
-        {
-            bool isAdmin = IsAdmin();
+        Task<Post?> GetPostBySlug(string slug);
 
-            var posts = Cache
-                .Where(p => p.PubDate <= DateTime.UtcNow && (p.IsPublished || isAdmin))
-                .Skip(skip)
-                .Take(count);
+        IAsyncEnumerable<Post> GetPosts();
 
-            return Task.FromResult(posts);
-        }
+        IAsyncEnumerable<Post> GetPosts(int count, int skip = 0);
 
-        public virtual Task<IEnumerable<Post>> GetPostsByCategory(string category)
-        {
-            bool isAdmin = IsAdmin();
+        IAsyncEnumerable<Post> GetPostsByCategory(string category);
 
-            var posts = from p in Cache
-                        where p.PubDate <= DateTime.UtcNow && (p.IsPublished || isAdmin)
-                        where p.Categories.Contains(category, StringComparer.OrdinalIgnoreCase)
-                        select p;
+        IAsyncEnumerable<Post> GetPostsByTag(string tag);
 
-            return Task.FromResult(posts);
+        Task<string> SaveFile(byte[] bytes, string fileName, string? suffix = null);
 
-        }
-
-        public virtual Task<Post> GetPostBySlug(string slug)
-        {
-            var post = Cache.FirstOrDefault(p => p.Slug.Equals(slug, StringComparison.OrdinalIgnoreCase));
-            bool isAdmin = IsAdmin();
-
-            if (post != null && post.PubDate <= DateTime.UtcNow && (post.IsPublished || isAdmin))
-            {
-                return Task.FromResult(post);
-            }
-
-            return Task.FromResult<Post>(null);
-        }
-
-        public virtual Task<Post> GetPostById(string id)
-        {
-            var post = Cache.FirstOrDefault(p => p.ID.Equals(id, StringComparison.OrdinalIgnoreCase));
-            bool isAdmin = IsAdmin();
-
-            if (post != null && post.PubDate <= DateTime.UtcNow && (post.IsPublished || isAdmin))
-            {
-                return Task.FromResult(post);
-            }
-
-            return Task.FromResult<Post>(null);
-        }
-
-        public virtual Task<IEnumerable<string>> GetCategories()
-        {
-            bool isAdmin = IsAdmin();
-
-            var categories = Cache
-                .Where(p => p.IsPublished || isAdmin)
-                .SelectMany(post => post.Categories)
-                .Select(cat => cat.ToLowerInvariant())
-                .Distinct();
-
-            return Task.FromResult(categories);
-        }
-
-        public abstract Task SavePost(Post post);
-
-        public abstract Task DeletePost(Post post);
-
-        public abstract Task<string> SaveFile(byte[] bytes, string fileName, string suffix = null);
-
-        protected void SortCache()
-        {
-            Cache.Sort((p1, p2) => p2.PubDate.CompareTo(p1.PubDate));
-        }
-
-        protected bool IsAdmin()
-        {
-            return ContextAccessor.HttpContext?.User?.Identity.IsAuthenticated == true;
-        }
+        Task SavePost(Post post);
     }
 }

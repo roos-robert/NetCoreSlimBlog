@@ -19,9 +19,9 @@
                     image.alt = file.name;
                     image.onload = function (e) {
                         image.setAttribute("data-filename", file.name);
-                        image.setAttribute("width", image.width);
-                        image.setAttribute("height", image.height);
-                        tinymce.activeEditor.execCommand('mceInsertContent', false, image.outerHTML);
+                        image.setAttribute("width", image.width.toString());
+                        image.setAttribute("height", image.height.toString());
+                        window.tinymce.activeEditor.execCommand('mceInsertContent', false, image.outerHTML);
                     };
                     image.src = this.result;
 
@@ -53,7 +53,7 @@
     if (edit && editPost) {
 
         if (typeof window.orientation !== "undefined" || navigator.userAgent.indexOf('IEMobile') !== -1) {
-            tinymce.init({
+            window.tinymce.init({
                 selector: '#Content',
                 theme: 'modern',
                 mobile: {
@@ -63,7 +63,7 @@
                 }
             });
         } else {
-            tinymce.init({
+            window.tinymce.init({
                 selector: '#Content',
                 autoresize_min_height: 200,
                 plugins: 'autosave preview searchreplace visualchars image link media fullscreen code codesample table hr pagebreak autoresize nonbreaking anchor insertdatetime advlist lists textcolor wordcount imagetools colorpicker',
@@ -119,10 +119,48 @@
         }
     }
 
+    // Category input enhancement - using autocomplete input
+    var selectcat = document.getElementById("selectcat");
+    var categories = document.getElementById("categories");
+    if (selectcat && categories) {
+
+        selectcat.onchange = function () {
+
+            var phv = selectcat.placeholder;
+            var val = selectcat.value.toLowerCase();
+
+            var phv_array = phv.split(",").map(function (item) {
+                return removeEmpty(item);
+            });
+
+            var val_array = val.split(",").map(function (item) {
+                return removeEmpty(item);
+            });
+
+            for (var j = val_array.length - 1; j >= 0; j--) {
+                var v = val_array[j];
+                var flag = false;
+                for (var i = phv_array.length - 1; i >= 0; i--) {
+                    if (phv_array[i] === v) {
+                        phv_array.splice(i, 1);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    phv_array.push(v);
+                }
+            }
+
+            selectcat.placeholder = phv_array.join(", ");
+            categories.value = selectcat.placeholder;
+            selectcat.value = "";
+        };
+    }
+
     // Tag input enhancement - using autocomplete input
     var selecttag = document.getElementById("selecttag");
-    var categories = document.getElementById("categories");
-    if (selecttag && categories) {
+    var tags = document.getElementById("tags");
+    if (selecttag && tags) {
 
         selecttag.onchange = function () {
 
@@ -152,7 +190,7 @@
             }
 
             selecttag.placeholder = phv_array.join(", ");
-            categories.value = selecttag.placeholder;
+            tags.value = selecttag.placeholder;
             selecttag.value = "";
         };
     }

@@ -5,34 +5,34 @@ using Microsoft.Extensions.Configuration;
 
 namespace NetCoreSlimBlog.Services
 {
-    public class BlogUserServices: IUserServices
+    using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+    using Microsoft.Extensions.Configuration;
+
+    using System;
+    using System.Text;
+
+    public class BlogUserServices : IUserServices
     {
-        private readonly IConfiguration _config;
+        private readonly IConfiguration config;
 
-        public BlogUserServices(IConfiguration config)
-        {
-            _config = config;
-        }
+        public BlogUserServices(IConfiguration config) => this.config = config;
 
-        public bool ValidateUser(string username, string password)
-        {
-            return username == _config["user:username"] && VerifyHashedPassword(password, _config);
-        }
+        public bool ValidateUser(string username, string password) =>
+            username == this.config[Constants.Config.User.UserName] && this.VerifyHashedPassword(password, this.config);
 
         private bool VerifyHashedPassword(string password, IConfiguration config)
         {
-            byte[] saltBytes = Encoding.UTF8.GetBytes(config["user:salt"]);
+            var saltBytes = Encoding.UTF8.GetBytes(config[Constants.Config.User.Salt]);
 
-            byte[] hashBytes = KeyDerivation.Pbkdf2(
+            var hashBytes = KeyDerivation.Pbkdf2(
                 password: password,
                 salt: saltBytes,
                 prf: KeyDerivationPrf.HMACSHA1,
                 iterationCount: 1000,
-                numBytesRequested: 256 / 8
-            );
+                numBytesRequested: 256 / 8);
 
-            string hashText = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
-            return hashText == config["user:password"];
+            var hashText = BitConverter.ToString(hashBytes).Replace(Constants.Dash, string.Empty, StringComparison.OrdinalIgnoreCase);
+            return hashText == config[Constants.Config.User.Password];
         }
     }
 }
