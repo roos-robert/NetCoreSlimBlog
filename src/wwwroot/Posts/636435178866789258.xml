@@ -65,7 +65,7 @@
   <ispublished>true</ispublished>
   <categories>
     <category>welcome</category>
-    <category>miniblog</category>
+    <category>NetCoreSlimBlog</category>
   </categories>
   <comments>
     <comment isAdmin="false" id="cd58dea4-a4d5-498a-b164-6a5b7c3f2f62">
@@ -79,7 +79,7 @@
       <email>noreply@gmail.com</email>
       <date>2019-10-13T18:15:48.000Z</date>
       <content>This is a comment made by the owner of the blog while logged in.
-
+      
 It looks slightly different to make it clear that this is a response from the owner.</content>
     </comment>
   </comments>
